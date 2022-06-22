@@ -27,26 +27,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onUpdated, ref } from 'vue'
 
-const todos = ref<{ name: string; id: number }[]>([])
+interface ITodos {
+  name: string
+  id: number
+}
+
+const todos = ref<ITodos[]>([])
 const todo = ref<string>('')
 const selected = ref<number | null>(null)
 
 const setNewTodo = () => {
   if (selected.value || selected.value === 0) {
-    console.log('selected')
     todos.value[selected.value].name = todo.value
-    todo.value = ''
     selected.value = null
   } else {
     todos.value.push({ name: todo.value, id: todos.value.length })
-    todo.value = ''
   }
+  todo.value = ''
 }
+
 const deleteTask = (index: number) => {
   todos.value.splice(index, 1)
 }
+
+onMounted(() => {
+  const existingTodos = localStorage.getItem('Notas')
+  if (existingTodos) {
+    todos.value = JSON.parse(existingTodos)
+  } else {
+    todos.value = []
+  }
+})
+onUpdated(() => {
+  localStorage.setItem('Notas', JSON.stringify(todos.value))
+})
 </script>
 
 <style scoped>

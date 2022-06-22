@@ -4,7 +4,7 @@ import TaskList from './components/TaskList.vue'
 
 <template>
   <main class="content">
-    <TaskList msg="todo list" />
+    <TaskList />
   </main>
 </template>
 
