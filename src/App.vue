@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import TaskList from './components/TaskList.vue'
 </script>
 
 <template>
   <main class="content">
-    <HelloWorld msg="todo list" />
+    <TaskList msg="todo list" />
   </main>
 </template>
 
