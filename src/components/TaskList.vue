@@ -50,15 +50,13 @@ const setNewTodo = () => {
 
 const deleteTask = (index: number) => {
   todos.value.splice(index, 1)
+  selected.value = null
+  todo.value = ''
 }
 
 onMounted(() => {
-  const existingTodos = localStorage.getItem('Notas')
-  if (existingTodos) {
-    todos.value = JSON.parse(existingTodos)
-  } else {
-    todos.value = []
-  }
+  const existingTodos = localStorage.getItem('Notas') || ''
+  todos.value = JSON.parse(existingTodos) || []
 })
 onUpdated(() => {
   localStorage.setItem('Notas', JSON.stringify(todos.value))
