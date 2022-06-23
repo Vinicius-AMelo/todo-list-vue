@@ -16,11 +16,11 @@ import TaskList from './components/TaskList.vue'
   width: 100vw
   min-height: 100vh
   background-color: #ffffff
-  padding: 30px
+  padding: 20px 55px
   overflow: hidden
 
   @include desktop
-    border-radius: 12px
+    border-radius: 20px
     width: 600px
     min-height: 600px
 </style>

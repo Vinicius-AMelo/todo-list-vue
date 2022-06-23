@@ -3,7 +3,10 @@
   <div class="conteudo">
     <form @submit.prevent="setNewTodo()">
       <input type="text" v-model="todo" />
-      <button type="submit">Adi</button>
+      <button type="submit">
+        <font-awesome-icon v-if="selected === null" icon="fa-solid fa-plus" />
+        <font-awesome-icon v-if="selected !== null" icon="fa-solid fa-pencil" />
+      </button>
     </form>
     <hr />
     <ul>
@@ -61,13 +64,13 @@ onUpdated(() => {
 </script>
 
 <style scoped lang="sass">
-  @import '../assets/_mixins'
+@import '../assets/_mixins'
 
-  h2
-    font-weight: 400
-    font-size: 40px
-    color: #112D4E
-    text-align: center
+h2
+  font-weight: 400
+  font-size: 40px
+  color: #112D4E
+  text-align: center
 .conteudo
   width: 100%
 
@@ -90,6 +93,11 @@ onUpdated(() => {
     border: none
     border-radius: 0 5px 5px 0
     background-color: #3F72AF
+    color: #ffffff
+    cursor: pointer
+
+  hr
+    margin-bottom: 10px
 
   ul
     list-style: none
@@ -97,9 +105,21 @@ onUpdated(() => {
     .todo
       display: flex
       justify-content: space-between
-      padding: 10px
-      padding-right:  30px
+      align-items: center
+      padding: 10px 30px 10px 10px
+      background-color: #DBE2EF
+      border-radius: 5px
+      height: 55px
+      margin-bottom: 10px
+
+      &:hover
+        border: 1px solid #3F72AF
+
 
       &.selected
-        background-color: red
+        border: 3px solid #3F72AF
+
+        svg
+          font-size: 20px
+          cursor: pointer
 </style>
