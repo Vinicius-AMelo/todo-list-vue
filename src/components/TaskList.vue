@@ -40,7 +40,9 @@ const todo = ref<string>('')
 const selected = ref<number | null>(null)
 
 function setNewTodo() {
-  if (selected.value || selected.value === 0) {
+  if (!todo.value) {
+    return
+  } else if (selected.value !== null) {
     todos.value[selected.value] = todo.value
     selected.value = null
   } else {
@@ -122,4 +124,5 @@ h2
         svg
           font-size: 20px
           cursor: pointer
+          color: #3F72AF
 </style>
