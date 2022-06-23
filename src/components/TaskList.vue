@@ -12,10 +12,13 @@
         class="todo"
         :class="index === selected ? 'selected' : ''"
       >
-        <button v-if="selected === index" @click.stop="deleteTask(index)">
-          asdas
-        </button>
         {{ eachTodo.name }}
+        <font-awesome-icon
+          v-if="selected === index"
+          @click.stop="deleteTask(index)"
+          class="joca"
+          icon="fa-solid fa-trash-can"
+        />
       </li>
     </ul>
 
@@ -63,12 +66,20 @@ onUpdated(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 ul {
   list-style: none;
-}
 
-.selected {
-  background-color: red;
+  .todo {
+    display: flex;
+    justify-content: space-between;
+
+    &.selected {
+      background-color: red;
+    }
+
+    .joca {
+    }
+  }
 }
 </style>

@@ -8,8 +8,8 @@ import TaskList from './components/TaskList.vue'
   </main>
 </template>
 
-<style>
-@import './assets/base.css';
+<style lang="scss">
+@import './assets/base.scss';
 
 .content {
   padding: 30px;
