@@ -1,11 +1,11 @@
 <template>
-  <h2>Todo List</h2>
-  <div>
+  <h2>To Do App</h2>
+  <div class="conteudo">
     <form @submit.prevent="setNewTodo()">
       <input type="text" v-model="todo" />
-      <button type="submit">Adicionar tarefa</button>
+      <button type="submit">Adi</button>
     </form>
-
+    <hr />
     <ul>
       <li
         v-for="(eachTodo, index) in todos"
@@ -60,15 +60,46 @@ onUpdated(() => {
 })
 </script>
 
-<style scoped lang="scss">
-ul {
-  list-style: none;
-  .todo {
-    display: flex;
-    justify-content: space-between;
-    &.selected {
-      background-color: red;
-    }
-  }
-}
+<style scoped lang="sass">
+  @import '../assets/_mixins'
+
+  h2
+    font-weight: 400
+    font-size: 40px
+    color: #112D4E
+    text-align: center
+.conteudo
+  width: 100%
+
+  form
+    margin: 10px auto
+    width: 300px
+
+  input
+    width: 255px
+    height: 32px
+    border: none
+    border-radius: 5px 0 0 5px
+    background-color: #DBE2EF
+    padding-left: 15px
+    color: #7B7B7B
+
+  button
+    width: 45px
+    height: 32px
+    border: none
+    border-radius: 0 5px 5px 0
+    background-color: #3F72AF
+
+  ul
+    list-style: none
+
+    .todo
+      display: flex
+      justify-content: space-between
+      padding: 10px
+      padding-right:  30px
+
+      &.selected
+        background-color: red
 </style>

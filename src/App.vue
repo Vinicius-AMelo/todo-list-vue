@@ -8,17 +8,19 @@ import TaskList from './components/TaskList.vue'
   </main>
 </template>
 
-<style lang="scss">
-@import './assets/base.scss';
+<style lang="sass">
+@import './assets/base.sass'
+@import './assets/_mixins'
 
-.content {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  padding: 30px;
-  overflow: hidden;
-}
+.content
+  width: 100vw
+  min-height: 100vh
+  background-color: #ffffff
+  padding: 30px
+  overflow: hidden
+
+  @include desktop
+    border-radius: 12px
+    width: 600px
+    min-height: 600px
 </style>
