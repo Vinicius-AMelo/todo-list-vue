@@ -12,13 +12,13 @@ import TaskList from './components/TaskList.vue'
 @import './assets/base.scss';
 
 .content {
-  padding: 30px;
   background-color: #ffffff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  font-weight: bolder;
-  font-size: 22px;
+  padding: 30px;
+  overflow: hidden;
 }
 </style>

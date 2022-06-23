@@ -3,7 +3,7 @@ import App from './App.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCoffee, faTrash, faTrashCan, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faTrashCan)
 

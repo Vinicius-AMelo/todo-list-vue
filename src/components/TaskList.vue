@@ -1,57 +1,51 @@
 <template>
+  <h2>Todo List</h2>
   <div>
+    <form @submit.prevent="setNewTodo()">
+      <input type="text" v-model="todo" />
+      <button type="submit">Adicionar tarefa</button>
+    </form>
+
     <ul>
       <li
         v-for="(eachTodo, index) in todos"
         :key="index"
         @click="
-          selected !== index
-            ? ((selected = index), (todo = eachTodo.name))
-            : ((selected = null), (todo = ''))
+          selected === index
+            ? ((selected = null), (todo = ''))
+            : ((selected = index), (todo = eachTodo))
         "
         class="todo"
         :class="index === selected ? 'selected' : ''"
       >
-        {{ eachTodo.name }}
+        {{ eachTodo }}
         <font-awesome-icon
           v-if="selected === index"
           @click.stop="deleteTask(index)"
-          class="joca"
           icon="fa-solid fa-trash-can"
         />
       </li>
     </ul>
-
-    <form @submit.prevent="setNewTodo()">
-      <input type="text" v-model="todo" />
-      <button type="submit">Adicionar tarefa</button>
-    </form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUpdated, ref } from 'vue'
 
-interface ITodos {
-  name: string
-  id: number
-}
-
-const todos = ref<ITodos[]>([])
+const todos = ref<string[]>([])
 const todo = ref<string>('')
 const selected = ref<number | null>(null)
 
-const setNewTodo = () => {
+function setNewTodo() {
   if (selected.value || selected.value === 0) {
-    todos.value[selected.value].name = todo.value
+    todos.value[selected.value] = todo.value
     selected.value = null
   } else {
-    todos.value.push({ name: todo.value, id: todos.value.length })
+    todos.value.push(todo.value)
   }
   todo.value = ''
 }
-
-const deleteTask = (index: number) => {
+function deleteTask(index: number) {
   todos.value.splice(index, 1)
   selected.value = null
   todo.value = ''
@@ -69,16 +63,11 @@ onUpdated(() => {
 <style scoped lang="scss">
 ul {
   list-style: none;
-
   .todo {
     display: flex;
     justify-content: space-between;
-
     &.selected {
       background-color: red;
-    }
-
-    .joca {
     }
   }
 }
