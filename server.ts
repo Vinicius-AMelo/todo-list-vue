@@ -2,7 +2,7 @@
 const express = require('express')
 
 const app = express()
-const porta = 3001
+const porta = process.env.PORT || 3001
 
 app.use(express.static(__dirname + '/dist/'))
 
