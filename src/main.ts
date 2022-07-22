@@ -7,6 +7,4 @@ import { faPencil, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faTrashCan, faPlus, faPencil)
 
-createApp(App)
-  .component('font-awesome-icon', FontAwesomeIcon)
-  .mount('#app')
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
